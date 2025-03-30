@@ -1,7 +1,3 @@
-# CÁCH CHẠY ỨNG DỤNG:
-
-MỞ THƯ MỤC CHỨA FILE run.sh, click dup vào file run.sh để chạy, nếu muốn tắt, nhấn Ctl+C để dừng ứng dụng, sau đó nhấn phím bất kỳ để thoát.
-
 # NHỮNG CHỨC NĂNG CHÍNH
 
 - ### Trang portal

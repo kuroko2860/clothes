@@ -1,0 +1,12 @@
+CÁCH CHẠY ỨNG DỤNG: MỞ THƯ MỤC CHỨA FILE run.sh, click dup vào file run.sh để chạy, nếu muốn tắt,
+nhấn Ctl+C để dừng ứng dụng, sau đó nhấn phím bất kỳ để thoát.
+
+Cách test thanh toán VNPAY:
+Thông tin thẻ test
+Để thực hiện giao dịch thành công trên môi trường test. Quý khách vui lòng sử dụng thông tin thẻ sau:
+
+Ngân hàng: NCB
+Số thẻ: 9704198526191432198
+Tên chủ thẻ:NGUYEN VAN A
+Ngày phát hành:07/15
+Mật khẩu OTP:123456
