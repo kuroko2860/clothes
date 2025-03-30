@@ -70,6 +70,35 @@ const ColourManage = () => {
         }
     }
 
+    const handleDeleteColour = async (colour) => {
+        const result = await Swal.fire({
+            title: 'Xác nhận xóa',
+            text: `Bạn có chắc chắn muốn xóa màu "${colour.colour_name}"?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Xóa',
+            cancelButtonText: 'Hủy'
+        });
+
+        if (result.isConfirmed) {
+            try {
+                await axios.delete(`${homeAPI}/colour/delete/${colour.colour_id}`);
+                
+                refreshColourTable();
+                swtoast.success({
+                    text: 'Xóa màu thành công!'
+                });
+            } catch (error) {
+                console.log(error);
+                swtoast.error({
+                    text: 'Xảy ra lỗi khi xóa màu, vui lòng thử lại!'
+                });
+            }
+        }
+    }
+
     return (
         <div className="catalog-management-item">
             <Heading title="Tất cả màu" />
@@ -81,9 +110,8 @@ const ColourManage = () => {
                     <thead>
                         <tr>
                             <th className='text-center'>STT</th>
-                            <th>
-                                Tên màu
-                            </th>
+                            <th>Tên màu</th>
+                            <th className='text-center'>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -93,6 +121,14 @@ const ColourManage = () => {
                                     <tr key={index}>
                                         <td className='text-center'>{index + 1}</td>
                                         <td>{colour.colour_name}</td>
+                                        <td className='text-center'>
+                                            <button 
+                                                className='btn btn-danger btn-sm'
+                                                onClick={() => handleDeleteColour(colour)}
+                                            >
+                                                Xóa
+                                            </button>
+                                        </td>
                                     </tr>
                                 )
                             })

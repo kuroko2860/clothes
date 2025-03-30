@@ -14,8 +14,13 @@
             .payment-item {
                 padding: 15px 20px;
                 cursor: pointer;
-                border: 1px solid #2f5acf;
+                border: 1px solid #d9d9d9;
                 margin-bottom: 1rem;
+                transition: all 0.2s ease;
+
+                &.active {
+                    border-color: #2f5acf;
+                }
 
                 .payment-item-name {
                     padding: 0px 14px;
@@ -30,6 +35,14 @@
                     padding: 0px 14px;
                     font-size: 32px;
                     margin-bottom: 11px;
+                    
+                    &.momo-icon {
+                        color: #d82d8b;
+                    }
+                    
+                    &.vnpay-icon {
+                        color: #0066b3;
+                    }
                 }
             }
         }

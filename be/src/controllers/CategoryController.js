@@ -106,10 +106,59 @@ let listLevel1 = async (req, res, next) => {
     }
 }
 
+let deleteLevel1 = async (req, res, next) => {
+    try {
+        const category_id = req.params.id;
+        if (!category_id) return res.status(400).send('Thiếu thông tin ID danh mục');
+        
+        // Check if category exists and is level 1
+        const category = await Category.findOne({ 
+            where: { category_id, parent_id: null } 
+        });
+        
+        if (!category) return res.status(404).send('Danh mục cấp 1 không tồn tại');
+        
+        // Delete all child categories (level 2)
+        await Category.destroy({
+            where: { parent_id: category_id }
+        });
+        
+        // Delete the level 1 category
+        await category.destroy();
+        return res.send({ message: 'Xóa danh mục và các danh mục con thành công' });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send('Gặp lỗi khi xóa dữ liệu vui lòng thử lại');
+    }
+}
+
+let deleteLevel2 = async (req, res, next) => {
+    try {
+        const category_id = req.params.id;
+        if (!category_id) return res.status(400).send('Thiếu thông tin ID danh mục');
+        
+        // Check if category exists and is level 2
+        const category = await Category.findOne({ 
+            where: { category_id, level: 2 } 
+        });
+        
+        if (!category) return res.status(404).send('Danh mục cấp 2 không tồn tại');
+        
+        // Delete the category
+        await category.destroy();
+        return res.send({ message: 'Xóa danh mục thành công' });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send('Gặp lỗi khi xóa dữ liệu vui lòng thử lại');
+    }
+}
+
 module.exports = {
     createLevel1,
     createLevel2,
     nestList,
     list,
-    listLevel1
+    listLevel1,
+    deleteLevel1,
+    deleteLevel2
 };

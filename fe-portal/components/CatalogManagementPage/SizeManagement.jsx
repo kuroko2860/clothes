@@ -70,6 +70,35 @@ const SizeManage = () => {
         }
     }
 
+    const handleDeleteSize = async (size) => {
+        const result = await Swal.fire({
+            title: 'Xác nhận xóa',
+            text: `Bạn có chắc chắn muốn xóa size "${size.size_name}"?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Xóa',
+            cancelButtonText: 'Hủy'
+        });
+
+        if (result.isConfirmed) {
+            try {
+                await axios.delete(`${homeAPI}/size/delete/${size.size_id}`);
+                
+                refreshSizetTable();
+                swtoast.success({
+                    text: 'Xóa size thành công!'
+                });
+            } catch (error) {
+                console.log(error);
+                swtoast.error({
+                    text: 'Xảy ra lỗi khi xóa size, vui lòng thử lại!'
+                });
+            }
+        }
+    }
+
     return (
         <div className="catalog-management-item">
             <Heading title="Tất cả size" />
@@ -81,9 +110,8 @@ const SizeManage = () => {
                     <thead>
                         <tr>
                             <th className='text-center'>STT</th>
-                            <th>
-                                Tên size
-                            </th>
+                            <th>Tên size</th>
+                            <th className='text-center'>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -93,6 +121,14 @@ const SizeManage = () => {
                                     <tr key={index}>
                                         <td className='text-center'>{index + 1}</td>
                                         <td>{size.size_name}</td>
+                                        <td className='text-center'>
+                                            <button 
+                                                className='btn btn-danger btn-sm'
+                                                onClick={() => handleDeleteSize(size)}
+                                            >
+                                                Xóa
+                                            </button>
+                                        </td>
                                     </tr>
                                 )
                             })

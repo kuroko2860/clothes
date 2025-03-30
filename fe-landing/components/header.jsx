@@ -9,6 +9,7 @@ import logo from "@/public/img/logo.png";
 import queries from "@/queries";
 import customerService from "@/services/customerService";
 import useCustomerStore from "@/store/customerStore";
+import useCartStore from "@/store/cartStore"; // Add this import
 import Login from "./login";
 import Register from "./register";
 import { BRANCH_NAME } from "@/helpers/config";
@@ -124,12 +125,16 @@ const Header = () => {
               }}
               className="inner-item menu-item fw-bold text-uppercase"
             >
-              <a href="#">Đăng Nhập</a>
+              <a href="#" className="text-decoration-none">
+                Đăng Nhập
+              </a>
             </li>
           ) : (
             <>
               <li className="inner-item menu-item fw-bold text-uppercase">
-                <Link href="/account/infor">Account</Link>
+                <Link href="/account/infor" className="text-decoration-none">
+                  Account
+                </Link>
               </li>
               <li
                 onClick={() => {
@@ -164,17 +169,45 @@ const Header = () => {
                 }}
                 className="inner-item menu-item fw-bold text-uppercase"
               >
-                <a href="#">Log Out</a>
+                <a href="#" className="text-decoration-none">
+                  Log Out
+                </a>
               </li>
             </>
           )}
-          <li className="cart inner-item menu-item fw-bold text-uppercase">
-            <Link href="/cart">
-              <FaShoppingBag />
-            </Link>
-          </li>
+          <ShoppingBagIcon />
         </ul>
       </div>
+    </div>
+  );
+};
+
+const ShoppingBagIcon = () => {
+  // Get cart items from the cart store
+  const cartItems = useCartStore((state) => state.productList);
+  const isLoggedIn = useCustomerStore((state) => state.isLoggedIn);
+
+  if (!isLoggedIn) {
+    return (
+      <div className="cart inner-item menu-item fw-bold text-uppercase">
+        <Link href="/cart" className="text-decoration-none">
+          <FaShoppingBag />
+          {/* <span className="cart-count">0</span> */}
+        </Link>
+      </div>
+    );
+  }
+
+  // Calculate total quantity of items in cart
+  const itemCount =
+    cartItems?.reduce((total, item) => total + item.quantity, 0) || 0;
+
+  return (
+    <div className="cart inner-item menu-item fw-bold text-uppercase">
+      <Link href="/cart" className="text-decoration-none">
+        <FaShoppingBag />
+        <span className="cart-count">{itemCount}</span>
+      </Link>
     </div>
   );
 };

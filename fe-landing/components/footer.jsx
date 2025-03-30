@@ -111,11 +111,11 @@ const Footer = () => {
         </div>
         <div className="footer-after row g-0 pt-3">
           <div className="copyright col col-lg-8 pe-1">
-            <h5 className="copyright-title">@ CÔNG TY TNHH NASTECH ASIA</h5>
+            <h5 className="copyright-title">@ CÔNG TY TNHH NOCOPYRIGHT 2025</h5>
             <p className="copyright-description">
-              Mã số doanh nghiệp: 0108116083. Giấy chứng nhận đăng ký doanh
-              nghiệp do Sở Kế hoạch và Đầu tư TP Cần Thơ cấp lần đầu ngày
-              21/03/2017.
+              Mã số doanh nghiệp: 0108888888. Giấy chứng nhận đăng ký doanh
+              nghiệp do Sở Kế hoạch và Đầu tư TP Hà Nội cấp lần đầu ngày
+              31/03/2025.
             </p>
           </div>
           <div className="logo col col-lg-4 d-flex justify-content-end ps-1">
