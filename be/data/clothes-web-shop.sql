@@ -31,10 +31,11 @@ INSERT INTO `users` (`user_id`, `email`, `password`, `role_id`) VALUES
 ('57344864-8985-42bf-92d5-b60751df65ff', 'khoa@gmail.com', '$2b$10$ZwWtuMG6GbGioKK4QlG.SeELNk5YdhfdIpm5/inZIRTvETeoBADf2', 2),
 ('8122d05f-513a-4b12-bd99-1b4e34ef8f3e', 'trong@gmail.com', '$2b$10$9G9lh4Ii1T7MyB/JuEkG9uNqSaZcalS5tQrTPfu45NynMZDDOD/56', 2),
 ('8d097ddc-c9a2-4c0a-8e60-bdc7c115d519', 'danh@gmail.com', '$2b$10$ZKWWd50RKECq3a8j.b0fn.CWeMjVwYnryETfHWV6TVKZeiEH3CtxS', 2),
-('9a2d12e6-0990-48e7-9f9a-98ffa7fc7768', 'an@gmail.com', '$2b$10$M.7KB8pIVdmU3FLWYvVJh.hq62XVDVr.gujPYBq9lyEdyXrOx4yQC', 1),
+('9a2d12e6-0990-48e7-9f9a-98ffa7fc7768', 'admin@gmail.com', '$2b$10$R1/QAD2XCwQ4y67qbcdfhuiIe52r5j9gC2rWbrMMLp5xtv1chOB3y', 1),
 ('ac0df2ff-dded-49bc-9c2c-da8ebe204296', 'phat@gmail.com', '$2b$10$Xxwnl35b0T1BBJ5dOaZ/pedV4.qosesOldtUEDSJUrRCiPHatrQ7e', 1),
 ('e1e3af7e-5ea7-4f6d-b488-0feb60d8e5c0', 'tin@gmail.com', '$2b$10$8skwyL4IXIy2V80MiaZ2AOtC9fKxMWUAwc/MzeO647VR4g6sUcRF6', 2),
 ('fae061a3-29eb-4295-9bd5-0f7b4dc8747b', 'huu@gmail.com', '$2b$10$Vnf66uUglVnu3rhAQMWC1O/ZE3a/0atNaEEQ.9TP4SrDh52NLLAhy', 2);
+
 
 --
 -- Dumping data for table `customer_infos`
@@ -216,15 +217,15 @@ INSERT INTO `product_images` (`image_id`, `path`, `product_variant_id`) VALUES
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `customer_name`, `email`, `phone_number`, `address`, `total_product_value`, `delivery_charges`, `total_order_value`, `user_id`) VALUES
-('71828451735555', 'Vương Trung Tín', 'tin@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, 'e1e3af7e-5ea7-4f6d-b488-0feb60d8e5c0'),
-('71828456877430', 'Vương Trung Tín', 'tin@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, 'e1e3af7e-5ea7-4f6d-b488-0feb60d8e5c0'),
-('71828458724551', 'Nguyễn Thanh Danh', 'danh@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 778000, 20000, 798000, '8d097ddc-c9a2-4c0a-8e60-bdc7c115d519'),
-('71852912157786', 'Vương Trung Tín', 'tin@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, 'e1e3af7e-5ea7-4f6d-b488-0feb60d8e5c0'),
-('71852912205857', 'Vương Trung Tín', 'tin@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, 'e1e3af7e-5ea7-4f6d-b488-0feb60d8e5c0'),
-('71852912226347', 'Vương Trung Tín', 'tin@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, 'e1e3af7e-5ea7-4f6d-b488-0feb60d8e5c0'),
-('71852987268026', 'Nguyễn Thanh Danh', 'danh@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, '8d097ddc-c9a2-4c0a-8e60-bdc7c115d519'),
-('71852987278236', 'Nguyễn Thanh Danh', 'danh@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, '8d097ddc-c9a2-4c0a-8e60-bdc7c115d519');
+INSERT INTO `orders` (`order_id`, `customer_name`, `email`, `phone_number`, `address`, `total_product_value`, `delivery_charges`, `total_order_value`, `user_id`, `payment_method`, `payment_status`) VALUES
+('71828451735555', 'Vương Trung Tín', 'tin@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, 'e1e3af7e-5ea7-4f6d-b488-0feb60d8e5c0', "COD", "Đang chờ thanh toán"),
+('71828456877430', 'Vương Trung Tín', 'tin@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, 'e1e3af7e-5ea7-4f6d-b488-0feb60d8e5c0', "COD", "Đang chờ thanh toán"),
+('71828458724551', 'Nguyễn Thanh Danh', 'danh@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 778000, 20000, 798000, '8d097ddc-c9a2-4c0a-8e60-bdc7c115d519', "COD", "Đang chờ thanh toán"),
+('71852912157786', 'Vương Trung Tín', 'tin@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, 'e1e3af7e-5ea7-4f6d-b488-0feb60d8e5c0', "COD", "Đang chờ thanh toán"),
+('71852912205857', 'Vương Trung Tín', 'tin@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, 'e1e3af7e-5ea7-4f6d-b488-0feb60d8e5c0', "COD", "Đang chờ thanh toán"),
+('71852912226347', 'Vương Trung Tín', 'tin@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, 'e1e3af7e-5ea7-4f6d-b488-0feb60d8e5c0', "COD", "Đang chờ thanh toán"),
+('71852987268026', 'Nguyễn Thanh Danh', 'danh@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, '8d097ddc-c9a2-4c0a-8e60-bdc7c115d519', "COD", "Đang chờ thanh toán"),
+('71852987278236', 'Nguyễn Thanh Danh', 'danh@gmail.com', '0932528331', '51A9 Đường Trần Nam Phú, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ', 957000, 20000, 977000, '8d097ddc-c9a2-4c0a-8e60-bdc7c115d519', "COD", "Đang chờ thanh toán");
 
 --
 -- Dumping data for table `order_items`
